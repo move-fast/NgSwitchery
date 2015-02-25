@@ -15,7 +15,7 @@ angular.module('NgSwitchery', [])
          * @param scope
          * @param elem
          * @param attrs
-		 * @param ngModel
+         * @param ngModel
          */
         function linkSwitchery(scope, elem, attrs, ngModel) {
             if(!ngModel) return false;
@@ -35,8 +35,16 @@ angular.module('NgSwitchery', [])
               }
               initializeSwitch();
             });
+            // watch ngModel changes then update Switchery view
+            scope.$watch('initValue', function () {
+                if (switcher) {
+                    switcher.element.checked = scope.initValue;
+                    switcher.setPosition(false);
+                }
+            });
 
             function initializeSwitch() {
+              console.log('initializeSwitch');
               $timeout(function() {
                 // Remove any old switcher
                 if (switcher) {
@@ -45,13 +53,11 @@ angular.module('NgSwitchery', [])
                 // (re)create switcher to reflect latest state of the checkbox element
                 switcher = new $window.Switchery(elem[0], options);
                 var element = switcher.element;
-                element.checked = scope.initValue;
-                switcher.setPosition(false);
                 element.addEventListener('change',function(evt) {
                     scope.$apply(function() {
                         ngModel.$setViewValue(element.checked);
-                    })
-                })
+                    });
+                });
               }, 0);
             }
             initializeSwitch();
@@ -62,5 +68,5 @@ angular.module('NgSwitchery', [])
             restrict: 'AE',
             scope : {initValue : '=ngModel'},
             link: linkSwitchery
-        }
+        };
     }]);
