@@ -44,7 +44,6 @@ angular.module('NgSwitchery', [])
             });
 
             function initializeSwitch() {
-              console.log('initializeSwitch');
               $timeout(function() {
                 // Remove any old switcher
                 if (switcher) {
