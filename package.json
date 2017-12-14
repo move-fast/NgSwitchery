@@ -1,0 +1,9 @@
+{
+  "name": "ng-switchery-npm",
+  "version": "1.0.0-alpha7",
+  "main": "src/ng-switchery.js",
+  "dependencies": {
+    "angular": "~1.2.19",
+    "switchery": "~0.7.0"
+  }
+}
