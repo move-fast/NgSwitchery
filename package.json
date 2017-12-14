@@ -4,6 +4,6 @@
   "main": "src/ng-switchery.js",
   "dependencies": {
     "angular": "~1.2.19",
-    "switchery": "~0.7.0"
+    "switchery": "git://github.com/abpetkov/switchery.git#6bbf4dcc6a0e351481f8d8fd44d99bf5225c5fe1",
   }
 }
